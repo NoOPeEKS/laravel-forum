@@ -63,7 +63,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/20/solid";
 import { computed } from "vue";
 const props = defineProps({
-    meta: Array,
+    meta: Object,
 });
 const previousUrl = computed(() => props.meta.links[0].url);
 const nextUrl = computed(() => [...props.meta.links].reverse()[0].url);
