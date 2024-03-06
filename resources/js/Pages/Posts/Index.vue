@@ -15,6 +15,6 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Container from "@/Components/Container.vue";
 import Pagination from "@/Components/Pagination.vue";
 defineProps({
-    posts: Array,
+    posts: Object,
 });
 </script>

@@ -41,7 +41,6 @@
                 >
                     <a
                         v-for="link in meta.links"
-                        :key="link.label"
                         :href="link.url"
                         class="relative inline-flex items-center first-of-type:rounded-l-md last-of-type:rounded-r-md px-3 py-2"
                         :class="{
@@ -62,7 +61,6 @@
 
 <script setup>
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/20/solid";
-import { Link } from "@inertiajs/vue3";
 defineProps({
     meta: Array,
 });
