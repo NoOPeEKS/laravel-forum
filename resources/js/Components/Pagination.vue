@@ -4,12 +4,12 @@
     >
         <div class="flex flex-1 justify-between sm:hidden">
             <a
-                href="#"
+                :href="previousUrl"
                 class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
                 >Previous</a
             >
             <a
-                href="#"
+                :href="nextUrl"
                 class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
                 >Next</a
             >
@@ -61,7 +61,10 @@
 
 <script setup>
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/20/solid";
-defineProps({
+import { computed } from "vue";
+const props = defineProps({
     meta: Array,
 });
+const previousUrl = computed(() => props.meta.links[0].url);
+const nextUrl = computed(() => [...props.meta.links].reverse()[0].url);
 </script>
