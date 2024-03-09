@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Inertia\Testing\AssertableInertia;
 use function Pest\Laravel\get;
@@ -10,4 +11,11 @@ it('can show a post', function () {
 
     get(route('posts.show', $post))
         ->assertComponent('Posts/Show');
+});
+
+it('passes a post to the view', function () {
+    $post = Post::factory()->create();
+
+    get(route('posts.show', $post))
+        ->assertHasResource('post', PostResource::make($post));
 });

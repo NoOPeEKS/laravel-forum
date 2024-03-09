@@ -39,7 +39,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return inertia('Posts/Show', []);
+        return inertia('Posts/Show', [
+            'post' => PostResource::make($post),
+        ]);
     }
 
     /**
