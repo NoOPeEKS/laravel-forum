@@ -22,7 +22,7 @@
                         <span
                             class="first-letter:uppercase block pt-1 text-sm text-gray-600"
                         >
-                            By Joe Bloggs
+                            By {{ comment.user.name }}
                         </span>
                     </li>
                 </ul>
@@ -35,6 +35,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Container from "@/Components/Container.vue";
 import Pagination from "@/Components/Pagination.vue";
+import { relativeDate } from "@/Utilities/date.js";
 import { formatDistance, parseISO } from "date-fns";
 import { computed } from "vue";
 const props = defineProps({
@@ -42,7 +43,5 @@ const props = defineProps({
     comments: Object,
 });
 
-const formattedDate = computed(() =>
-    formatDistance(parseISO(props.post.created_at), new Date()),
-);
+const formattedDate = computed(() => relativeDate(props.post.created_at));
 </script>
