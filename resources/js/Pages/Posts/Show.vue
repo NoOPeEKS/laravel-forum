@@ -16,15 +16,7 @@
                         :key="comment.id"
                         class="block px-2 py-4"
                     >
-                        <span class="text-sm">
-                            {{ comment.body }}
-                        </span>
-                        <span
-                            class="first-letter:uppercase block pt-1 text-sm text-gray-600"
-                        >
-                            By {{ comment.user.name }}
-                            {{ relativeDate(comment.created_at) }} ago
-                        </span>
+                        <Comment :comment="comment" />
                     </li>
                 </ul>
                 <Pagination :meta="comments.meta" />
@@ -36,6 +28,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Container from "@/Components/Container.vue";
 import Pagination from "@/Components/Pagination.vue";
+import Comment from "@/Components/Comment.vue";
 import { relativeDate } from "@/Utilities/date.js";
 import { computed } from "vue";
 const props = defineProps({
