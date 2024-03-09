@@ -23,6 +23,7 @@
                             class="first-letter:uppercase block pt-1 text-sm text-gray-600"
                         >
                             By {{ comment.user.name }}
+                            {{ relativeDate(comment.created_at) }} ago
                         </span>
                     </li>
                 </ul>
@@ -36,7 +37,6 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Container from "@/Components/Container.vue";
 import Pagination from "@/Components/Pagination.vue";
 import { relativeDate } from "@/Utilities/date.js";
-import { formatDistance, parseISO } from "date-fns";
 import { computed } from "vue";
 const props = defineProps({
     post: Object,
