@@ -6,7 +6,7 @@
                 >{{ formattedDate }} ago by {{ post.user.name }}</span
             >
             <article class="mt-6">
-                {{ post.body }}
+                <pre class="whitespace-pre-wrap font-sans">{{ post.body }}</pre>
             </article>
         </Container>
     </AppLayout>
