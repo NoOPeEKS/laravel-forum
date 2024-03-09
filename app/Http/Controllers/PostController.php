@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+
     /**
      * Display a listing of the resource.
      */
@@ -42,6 +43,7 @@ class PostController extends Controller
         $post->load('user');
         return inertia('Posts/Show', [
             'post' => PostResource::make($post),
+            'comments' => CommentResource::collection($post->comments()->paginate(10)),
         ]);
     }
 
