@@ -34,6 +34,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::post('posts/{post}/comments/', [CommentController::class, 'store'])->name('posts.comments.store');
 });
 
 
@@ -41,4 +42,3 @@ Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 
-Route::post('posts/{post}/comments/', [CommentController::class, 'store'])->name('posts.comments.store');
