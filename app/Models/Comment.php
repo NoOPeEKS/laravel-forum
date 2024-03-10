@@ -10,6 +10,10 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'body', // make it so that the CommentController::store() can fill the property body
+    ];
+
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
@@ -17,4 +21,5 @@ class Comment extends Model
     public function post(): BelongsTo {
         return $this->belongsTo(Post::class);
     }
+
 }
