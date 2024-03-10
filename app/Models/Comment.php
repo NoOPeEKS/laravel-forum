@@ -10,9 +10,10 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'body', // make it so that the CommentController::store() can fill the property body
-    ];
+    // protected $fillable = [
+    //     'body', // make it so that the CommentController::store() can fill the property body
+    // ]; // This $fillable is no longer needed because we deactivated mass assignment protection
+    //    // and we will validate every request from now on.
 
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
