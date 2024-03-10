@@ -22,3 +22,14 @@ it('can store a comment', function () {
         'body' => 'This is a comment',
     ]);
 });
+
+it('redirects to the post show page', function () {
+    $user = User::factory()->create();
+    $post = Post::factory()->create();
+
+    actingAs($user)
+        ->post(route('posts.comments.store', $post), [
+            'body' => 'This is a comment',
+        ])
+        ->assertRedirect(route('posts.show', $post));
+});
