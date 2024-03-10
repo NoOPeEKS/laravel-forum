@@ -19,7 +19,6 @@
 
 <script setup>
 import { relativeDate } from "@/Utilities/date.js";
-
 defineProps({
     comment: Object,
 });

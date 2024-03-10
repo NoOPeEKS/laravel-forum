@@ -16,7 +16,7 @@
                         :key="comment.id"
                         class="block px-2 py-4"
                     >
-                        <Comment :comment="comment" />
+                        <Comment :comment="comment" :only="['comments']" />
                     </li>
                 </ul>
                 <Pagination :meta="comments.meta" />
