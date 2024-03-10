@@ -21,8 +21,16 @@
                             placeholder="Speak your mind..."
                             rows="4"
                         />
+                        <InputError
+                            :message="commentForm.errors.body"
+                            class="mt-1"
+                        />
                     </div>
-                    <PrimaryButton type="submit" class="mt-3">
+                    <PrimaryButton
+                        type="submit"
+                        class="mt-3"
+                        :disabled="commentForm.processing"
+                    >
                         Add Comment
                     </PrimaryButton>
                 </form>
@@ -48,6 +56,7 @@ import Comment from "@/Components/Comment.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextArea from "@/Components/TextArea.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import InputError from "@/Components/InputError.vue";
 import { relativeDate } from "@/Utilities/date.js";
 import { computed } from "vue";
 import { useForm } from "@inertiajs/vue3";
