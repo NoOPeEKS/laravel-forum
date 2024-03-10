@@ -10,7 +10,11 @@
             </article>
             <div class="mt-12">
                 <h2 class="text-xl font-semibold">Comments</h2>
-                <form @submit.prevent="addComment" class="mt-4">
+                <form
+                    v-if="$page.props.auth.user"
+                    @submit.prevent="addComment"
+                    class="mt-4"
+                >
                     <div>
                         <InputLabel for="body" class="sr-only">
                             Comment
