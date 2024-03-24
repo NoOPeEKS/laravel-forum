@@ -45,7 +45,10 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment): bool
     {
-        return $user->id === $comment->user_id;
+        if($user->id !== $comment->user_id) {
+            return false;
+        }
+        return $comment->created_at->isAfter(now()->subHour());
     }
 
     /**
