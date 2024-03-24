@@ -16,7 +16,7 @@
             <div class="mt-1">
                 <form
                     v-if="comment.can?.delete"
-                    @submit.prevent="deleteComment"
+                    @submit.prevent="$emit('delete', comment.id)"
                 >
                     <button>Delete</button>
                 </form>
@@ -33,8 +33,6 @@ import { usePage } from "@inertiajs/vue3";
 const props = defineProps({
     comment: Object,
 });
-const deleteComment = () =>
-    router.delete(route("comments.destroy", props.comment.id), {
-        preserveScroll: true,
-    });
+
+const emit = defineEmits(["delete"]);
 </script>

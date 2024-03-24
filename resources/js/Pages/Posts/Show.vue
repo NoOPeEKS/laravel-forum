@@ -44,7 +44,11 @@
                         :key="comment.id"
                         class="block px-2 py-4"
                     >
-                        <Comment :comment="comment" :only="['comments']" />
+                        <Comment
+                            @delete="deleteComment"
+                            :comment="comment"
+                            :only="['comments']"
+                        />
                     </li>
                 </ul>
                 <Pagination :meta="comments.meta" />
@@ -63,6 +67,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputError from "@/Components/InputError.vue";
 import { relativeDate } from "@/Utilities/date.js";
 import { computed } from "vue";
+import { router } from "@inertiajs/vue3";
 import { useForm } from "@inertiajs/vue3";
 const props = defineProps({
     post: Object,
@@ -79,4 +84,14 @@ const addComment = () => {
         onSuccess: () => commentForm.reset(),
     });
 };
+const deleteComment = (commentId) =>
+    router.delete(
+        route("comments.destroy", {
+            comment: commentId,
+            page: props.comments.meta.current_page,
+        }),
+        {
+            preserveScroll: true,
+        },
+    );
 </script>
